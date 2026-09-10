@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Address Verification Form</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Digital Address Verification</h1>
+    <p class="subtitle">Submit current &amp; permanent address for a candidate</p>
+    <div class="header-actions"><a href="/spec" target="_blank" rel="noopener" class="header-btn">📋 Spec</a><a href="/openapi.json" target="_blank" rel="noopener" class="header-btn">📥 API collection</a><button type="button" id="reset-data-btn" class="header-btn">↺ Reset data</button></div>
+  </header>
+
+  <div id="app-section">
+  <main>
+    <section class="panel">
+      <h2>Submit Address</h2>
+      <form id="address-form">
+        <label>
+          Candidate ID
+          <input type="text" id="candidateId" placeholder="e.g. 101" required />
+        </label>
+
+        <fieldset>
+          <legend>Current Address</legend>
+          <label>Address Line 1<input type="text" id="current-line1" required /></label>
+          <label>City<input type="text" id="current-city" required /></label>
+          <label>
+            State
+            <select id="current-state"></select>
+          </label>
+          <label>Pincode<input type="text" id="current-pincode" maxlength="6" required /></label>
+          <p class="field-error" id="current-pincode-error"></p>
+        </fieldset>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="same-as-permanent" />
+          Permanent address is the same as current
+        </label>
+
+        <fieldset id="permanent-fieldset">
+          <legend>Permanent Address</legend>
+          <label>Address Line 1<input type="text" id="permanent-line1" /></label>
+          <label>City<input type="text" id="permanent-city" /></label>
+          <label>
+            State
+            <select id="permanent-state"></select>
+          </label>
+          <label>Pincode<input type="text" id="permanent-pincode" maxlength="6" /></label>
+        </fieldset>
+
+        <button type="submit">Submit Address</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Submitted Addresses</h2>
+      <table id="submissions-table">
+        <thead>
+          <tr>
+            <th>Candidate</th>
+            <th>Current</th>
+            <th>Permanent</th>
+            <th>Same As Permanent</th>
+            <th>Match %</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody id="submissions-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+  <script>window.SV_APP_ID='02';window.SV_SCOREBOARD='https://sv-qa-scoreboard.onrender.com';</script>
+  <script src="report-widget.js"></script>
+</body>
+</html>
